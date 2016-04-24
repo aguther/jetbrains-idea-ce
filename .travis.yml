@@ -1,2 +1,2 @@
 language: java
-script: clean buildRpm
+script: ./gradlew clean buildRpm
