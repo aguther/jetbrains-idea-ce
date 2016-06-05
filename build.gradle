@@ -84,6 +84,10 @@ ospackage {
     from('src/main/resources/desktop') {
         into '/usr/local/share/applications'
     }
+    from('src/main/resources/profile.d') {
+        into '/etc/profile.d'
+        fileMode 0644
+    }
 }
 
 buildRpm {
