@@ -57,7 +57,7 @@ ospackage {
 
     packager = 'Andreas Guther'
 
-    version = (ideaIsEarlyAccessRelease != 'yes' ? ideaRelease : "$ideaRelease.${parsedVersion.minor}")
+    version = ideaRelease
     release = rpmRelease
     arch = NOARCH
     os = LINUX
