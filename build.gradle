@@ -6,7 +6,8 @@ plugins {
 }
 
 // --------------------------------------------------------------------------------------------------------------------
-def parsedVersion      = VersionNumber.parse(ideaBuildNumber)
+def parsedIdeaRelease     = VersionNumber.parse(ideaRelease)
+def parsedIdeaBuildNumber = VersionNumber.parse(ideaBuildNumber)
 
 // --------------------------------------------------------------------------------------------------------------------
 task downloadPackage(type: de.undercouch.gradle.tasks.download.Download) {
@@ -57,7 +58,7 @@ ospackage {
 
     packager = 'Andreas Guther'
 
-    version = "${ideaRelease}.${parsedVersion.minor}.${parsedVersion.micro}"
+    version = "${parsedIdeaRelease.major}.${parsedIdeaRelease.minor}.${parsedIdeaBuildNumber.minor}.${parsedIdeaBuildNumber.micro}"
     release = rpmRelease
     arch = NOARCH
     os = LINUX
@@ -65,7 +66,7 @@ ospackage {
     user = 'root'
 
     requires('java')
-    provides('jetbrains-idea', "${parsedVersion.major}.${parsedVersion.minor}", EQUAL)
+    provides('jetbrains-idea', "${parsedIdeaBuildNumber.major}.${parsedIdeaBuildNumber.minor}", EQUAL)
     conflicts('jetbrains-idea-ue')
 
     into "$targetDirectory"
